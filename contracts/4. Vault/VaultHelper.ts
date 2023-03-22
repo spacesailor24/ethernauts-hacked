@@ -8,8 +8,7 @@ const helper = async (victim: any) => {
     Unlock the vault by somehow reading the private password from 
     Vault directly
   */
-  const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8545');
-  const password = await provider.getStorageAt(victim.address, 1);
+  const password = await waffle.provider.getStorageAt(victim.address, 1);
   await victim.unlock(password);
 };
 
